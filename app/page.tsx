@@ -20,6 +20,19 @@ export const metadata: Metadata = {
     title: 'Website Design, App Development & IT Support — Pinfeeds Digital Agency Lagos',
     description: 'Top-rated website design, app development & IT support company in Lagos, Nigeria. 8+ years · 150+ projects · 24/7 support.',
     url: 'https://pinfeeds.org',
+    images: [
+      {
+        url: 'https://pinfeeds.org/og-image.png',
+        width: 1731,
+        height: 909,
+        alt: 'Pinfeeds Digital Agency Limited — Smart Solutions. Real Results.',
+        type: 'image/png',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['https://pinfeeds.org/og-image.png'],
   },
 };
 import { getPortfolioItems } from '@/data/portfolio';
