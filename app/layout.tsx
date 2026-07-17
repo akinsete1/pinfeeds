@@ -66,10 +66,11 @@ export const metadata: Metadata = {
       "Premier software, website & mobile app development company with 8+ years experience. Trusted by businesses across Nigeria and beyond.",
     images: [
       {
-        url: "/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Pinfeeds Digital Agency Limited",
+        url: "https://pinfeeds.org/og-image.png",
+        width: 1731,
+        height: 909,
+        alt: "Pinfeeds Digital Agency Limited — Smart Solutions. Real Results.",
+        type: "image/png",
       },
     ],
   },
@@ -78,7 +79,7 @@ export const metadata: Metadata = {
     title: "Pinfeeds Digital Agency — Premium IT Solutions",
     description:
       "Premier software, website & mobile app development company with 8+ years experience.",
-    images: ["/og-image.jpg"],
+    images: ["https://pinfeeds.org/og-image.png"],
   },
   robots: {
     index: true,
