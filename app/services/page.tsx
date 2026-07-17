@@ -5,10 +5,19 @@ import CtaSection from '@/components/home/CtaSection';
 import styles from './services.module.css';
 
 export const metadata: Metadata = {
-  title: 'Our Services — Pinfeeds Digital Agency',
+  title: 'Website Design, App Development & IT Support Services — Pinfeeds Digital Agency',
   description:
-    'Comprehensive IT solutions including web development, mobile apps, digital marketing, and UI/UX design from the top IT agency in Nigeria.',
+    'Explore our full range of IT services: professional website design, mobile app development, IT support, software development, digital marketing, and cloud services in Lagos, Nigeria.',
   alternates: { canonical: 'https://pinfeeds.org/services' },
+  keywords: [
+    'website design Lagos',
+    'app development Nigeria',
+    'IT support Lagos',
+    'mobile app development',
+    'software development Nigeria',
+    'digital marketing agency',
+    'cloud services Nigeria',
+  ],
 };
 
 export default async function ServicesPage() {

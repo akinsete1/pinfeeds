@@ -31,18 +31,27 @@ export const metadata: Metadata = {
   description:
     "Pinfeeds Digital Agency Limited is a premier global IT company offering AI Services, website development, software development, mobile app development, digital marketing, UX/UI design, and cloud services.",
   keywords: [
+    "website design",
+    "website design company Lagos",
+    "website design Nigeria",
+    "app development",
+    "app development company Nigeria",
+    "mobile app development Lagos",
+    "IT support",
+    "IT support Nigeria",
+    "IT support Lagos",
     "digital agency Nigeria",
     "global IT company",
     "AI services worldwide",
     "AI development company",
     "website development",
     "software development",
-    "mobile app development",
     "digital marketing",
-    "tech agency Nigeria and Worldwide",
+    "tech agency Nigeria",
     "Pinfeeds",
     "IT company Nigeria",
     "web development Lagos",
+    "IT consulting Lagos",
   ],
   authors: [{ name: "Pinfeeds Digital Agency Limited", url: "https://pinfeeds.org" }],
   creator: "Pinfeeds Digital Agency Limited",
@@ -99,84 +108,77 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Organization",
-              name: "Pinfeeds Digital Agency Limited",
-              url: "https://pinfeeds.org",
-              logo: "https://pinfeeds.org/logo.png",
-              contactPoint: {
-                "@type": "ContactPoint",
+            __html: JSON.stringify([
+              {
+                "@context": "https://schema.org",
+                "@type": ["Organization", "LocalBusiness"],
+                name: "Pinfeeds Digital Agency Limited",
+                url: "https://pinfeeds.org",
+                logo: "https://pinfeeds.org/logo.png",
+                image: "https://pinfeeds.org/og-image.jpg",
                 telephone: "+2348066893144",
-                contactType: "customer service",
-                areaServed: "NG",
-                availableLanguage: "English",
+                email: "hello@pinfeeds.org",
+                contactPoint: {
+                  "@type": "ContactPoint",
+                  telephone: "+2348066893144",
+                  contactType: "customer service",
+                  areaServed: ["NG", "GB", "US"],
+                  availableLanguage: "English",
+                },
+                address: {
+                  "@type": "PostalAddress",
+                  addressLocality: "Lagos",
+                  addressRegion: "Lagos State",
+                  addressCountry: "NG",
+                },
+                geo: {
+                  "@type": "GeoCoordinates",
+                  latitude: 6.5244,
+                  longitude: 3.3792,
+                },
+                openingHoursSpecification: {
+                  "@type": "OpeningHoursSpecification",
+                  dayOfWeek: ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+                  opens: "00:00",
+                  closes: "23:59",
+                },
+                sameAs: [
+                  "https://www.facebook.com/pinfeeds",
+                  "https://x.com/pinfeedsdigital",
+                  "https://www.instagram.com/pinfeeds/",
+                  "https://www.linkedin.com/in/akinsete-adedeji-93284ab3/",
+                ],
+                description:
+                  "Premier IT company in Lagos, Nigeria offering website design, app development, IT support, software development, digital marketing, and cloud services.",
+                foundingDate: "2016",
+                priceRange: "$$",
+                hasOfferCatalog: {
+                  "@type": "OfferCatalog",
+                  name: "IT & Digital Services",
+                  itemListElement: [
+                    { "@type": "Offer", itemOffered: { "@type": "Service", name: "Website Design", url: "https://pinfeeds.org/services/web-development" } },
+                    { "@type": "Offer", itemOffered: { "@type": "Service", name: "App Development", url: "https://pinfeeds.org/services/mobile-app-development" } },
+                    { "@type": "Offer", itemOffered: { "@type": "Service", name: "IT Support", url: "https://pinfeeds.org/services/it-support" } },
+                    { "@type": "Offer", itemOffered: { "@type": "Service", name: "Software Development", url: "https://pinfeeds.org/services/software-development" } },
+                    { "@type": "Offer", itemOffered: { "@type": "Service", name: "Digital Marketing", url: "https://pinfeeds.org/services/digital-marketing" } },
+                    { "@type": "Offer", itemOffered: { "@type": "Service", name: "Cloud Services", url: "https://pinfeeds.org/services/cloud-services" } },
+                    { "@type": "Offer", itemOffered: { "@type": "Service", name: "AI & Machine Learning", url: "https://pinfeeds.org/services/ai-services" } },
+                    { "@type": "Offer", itemOffered: { "@type": "Service", name: "IT Consulting", url: "https://pinfeeds.org/services/consulting" } },
+                  ],
+                },
               },
-              address: {
-                "@type": "PostalAddress",
-                addressCountry: "NG",
+              {
+                "@context": "https://schema.org",
+                "@type": "WebSite",
+                name: "Pinfeeds Digital Agency Limited",
+                url: "https://pinfeeds.org",
+                potentialAction: {
+                  "@type": "SearchAction",
+                  target: "https://pinfeeds.org/search?q={search_term_string}",
+                  "query-input": "required name=search_term_string",
+                },
               },
-              sameAs: [],
-              description:
-                "Premier IT company offering website development, software development, mobile app development, digital marketing, and cloud services.",
-              foundingDate: "2016",
-              numberOfEmployees: "10-50",
-              hasOfferCatalog: {
-                "@type": "OfferCatalog",
-                name: "IT & Digital Services",
-                itemListElement: [
-                  {
-                    "@type": "Offer",
-                    itemOffered: {
-                      "@type": "Service",
-                      name: "Website Development"
-                    }
-                  },
-                  {
-                    "@type": "Offer",
-                    itemOffered: {
-                      "@type": "Service",
-                      name: "Software Development"
-                    }
-                  },
-                  {
-                    "@type": "Offer",
-                    itemOffered: {
-                      "@type": "Service",
-                      name: "Mobile App Development"
-                    }
-                  },
-                  {
-                    "@type": "Offer",
-                    itemOffered: {
-                      "@type": "Service",
-                      name: "Digital Marketing"
-                    }
-                  },
-                  {
-                    "@type": "Offer",
-                    itemOffered: {
-                      "@type": "Service",
-                      name: "Cloud Services"
-                    }
-                  },
-                  {
-                    "@type": "Offer",
-                    itemOffered: {
-                      "@type": "Service",
-                      name: "AI & Machine Learning"
-                    }
-                  },
-                  {
-                    "@type": "Offer",
-                    itemOffered: {
-                      "@type": "Service",
-                      name: "IT Consulting"
-                    }
-                  }
-                ]
-              }
-            }),
+            ]),
           }}
         />
       </head>

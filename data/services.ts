@@ -78,6 +78,14 @@ export const fallbackServices: Service[] = [
     color: '#0095eb',
   },
   {
+    id: 'it-support',
+    icon: '🛠️',
+    title: 'IT Support',
+    description: 'Keep your business running smoothly with our reliable, round-the-clock IT support services. From helpdesk assistance to full infrastructure management, we are your dedicated technology partner in Lagos and beyond.',
+    features: ['24/7 Helpdesk Support', 'Network Setup & Maintenance', 'Cybersecurity', 'Hardware & Software Troubleshooting', 'IT Infrastructure Management', 'Remote & On-site Support'],
+    color: '#e11d48',
+  },
+  {
     id: 'ai-services',
     icon: '🤖',
     title: 'AI & Machine Learning',

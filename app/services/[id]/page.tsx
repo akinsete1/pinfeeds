@@ -17,8 +17,15 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
   const service = await getServiceById(resolvedParams.id);
   if (!service) return { title: 'Service Not Found' };
   return {
-    title: `${service.title} — Pinfeeds Digital Agency Limited`,
-    description: service.description,
+    title: `${service.title} in Lagos, Nigeria — Pinfeeds Digital Agency`,
+    description: `${service.description} Serving Lagos and all of Nigeria with 8+ years of experience.`,
+    alternates: { canonical: `https://pinfeeds.org/services/${resolvedParams.id}` },
+    keywords: [
+      service.title,
+      `${service.title} Lagos`,
+      `${service.title} Nigeria`,
+      'Pinfeeds Digital Agency',
+    ],
   };
 }
 
@@ -30,8 +37,45 @@ export default async function ServicePage({ params }: { params: Promise<{ id: st
     notFound();
   }
 
+  const serviceJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: service.title,
+    description: service.description,
+    url: `https://pinfeeds.org/services/${service.id}`,
+    provider: {
+      '@type': 'LocalBusiness',
+      name: 'Pinfeeds Digital Agency Limited',
+      url: 'https://pinfeeds.org',
+      telephone: '+2348066893144',
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Lagos',
+        addressRegion: 'Lagos State',
+        addressCountry: 'NG',
+      },
+    },
+    areaServed: [
+      { '@type': 'Country', name: 'Nigeria' },
+      { '@type': 'City', name: 'Lagos' },
+    ],
+    serviceType: service.title,
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: `${service.title} Services`,
+      itemListElement: service.features.map((f) => ({
+        '@type': 'Offer',
+        itemOffered: { '@type': 'Service', name: f },
+      })),
+    },
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
+      />
       <div className="page-title-bar" style={{ borderBottomColor: service.color }}>
         <div className="container">
           <div className={styles.titleWrapper}>
