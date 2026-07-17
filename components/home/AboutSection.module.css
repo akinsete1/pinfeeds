@@ -1,0 +1,202 @@
+.about {}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+/* Image Side */
+.imageSide {}
+
+.imageWrapper {
+  position: relative;
+  padding-bottom: 40px;
+}
+
+.imageBg {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  right: -20px;
+  bottom: 20px;
+  background: var(--gradient-primary);
+  border-radius: var(--radius-lg);
+  opacity: 0.08;
+}
+
+.imageCard {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+
+.imageInner {
+  width: 100%;
+  aspect-ratio: 4/3;
+  background: var(--dark-3);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.imagePlaceholder {
+  width: 100%;
+  height: 100%;
+}
+
+.imagePlaceholder svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Highlight chips */
+.highlightChip {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--white);
+  border-radius: var(--radius-sm);
+  padding: 12px 16px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+  animation: fadeInUp 0.6s ease var(--delay, 0s) both;
+}
+
+.highlightChip:nth-child(3) {
+  bottom: 20px;
+  left: -20px;
+}
+
+.highlightChip:nth-child(4) {
+  top: -20px;
+  right: -10px;
+}
+
+.highlightChip:nth-child(5) {
+  bottom: 80px;
+  right: -30px;
+}
+
+.chipValue {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 800;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.chipLabel {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-body);
+  line-height: 1.2;
+  max-width: 80px;
+}
+
+/* Text Side */
+.textSide {}
+
+.intro {
+  color: var(--text-body);
+  font-size: 1rem;
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+
+.capabilities {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 24px;
+  margin: 28px 0;
+}
+
+.capItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--text-dark);
+}
+
+.capIcon {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(0,149,235,0.1);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.cta {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  flex-wrap: wrap;
+  margin-top: 32px;
+}
+
+.phone {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.phoneIcon {
+  font-size: 1.5rem;
+}
+
+.phoneLabel {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--text-light);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 2px;
+}
+
+.phoneNumber {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.phoneNumber:hover {
+  color: var(--primary);
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+  .capabilities {
+    grid-template-columns: 1fr 1fr;
+  }
+  .highlightChip:nth-child(5) {
+    right: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .capabilities {
+    grid-template-columns: 1fr;
+  }
+  .cta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

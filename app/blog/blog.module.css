@@ -1,0 +1,116 @@
+.blog {}
+.layout { display: grid; grid-template-columns: 1fr 320px; gap: 48px; align-items: start; }
+.posts {}
+.grid { display: flex; flex-direction: column; gap: 32px; }
+.card {
+  background: var(--white);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--grey-light);
+  transition: var(--transition);
+  display: grid;
+  grid-template-columns: 280px 1fr;
+}
+.card:hover { box-shadow: 0 16px 48px rgba(0,0,0,0.1); transform: translateY(-2px); }
+.imageWrapper { position: relative; overflow: hidden; }
+.image { width: 100%; height: 100%; }
+.image svg { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+.card:hover .image svg { transform: scale(1.05); }
+.imageLink { position: absolute; inset: 0; z-index: 1; }
+.categoryBadge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 2;
+  padding: 4px 12px;
+  background: var(--gradient-primary);
+  color: white;
+  border-radius: 50px;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.dateBadge {
+  position: absolute;
+  bottom: 14px;
+  left: 14px;
+  z-index: 2;
+  background: var(--white);
+  border-radius: 8px;
+  padding: 8px 12px;
+  text-align: center;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+}
+.dateDay { display: block; font-family: var(--font-heading); font-size: 1.1rem; font-weight: 800; color: var(--primary); line-height: 1; }
+.dateMonth { display: block; font-size: 0.625rem; font-weight: 600; color: var(--text-body); text-transform: uppercase; letter-spacing: 0.05em; }
+.content { padding: 28px; display: flex; flex-direction: column; }
+.meta { display: flex; align-items: center; gap: 8px; font-size: 0.8125rem; color: var(--text-light); margin-bottom: 12px; flex-wrap: wrap; }
+.title { font-size: 1.125rem; font-weight: 700; color: var(--text-dark); margin-bottom: 12px; line-height: 1.4; flex: 1; }
+.title a { color: inherit; text-decoration: none; transition: var(--transition); }
+.title a:hover { color: var(--primary); }
+.excerpt { font-size: 0.875rem; color: var(--text-body); line-height: 1.75; margin-bottom: 20px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.readMore {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-heading);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--primary);
+  text-decoration: none;
+  transition: var(--transition);
+}
+.readMore:hover { gap: 8px; }
+
+/* Sidebar */
+.sidebar { display: flex; flex-direction: column; gap: 28px; }
+.widget {
+  background: var(--white);
+  border-radius: var(--radius-md);
+  padding: 28px;
+  border: 1px solid var(--grey-light);
+}
+.widgetTitle {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--grey-light);
+}
+.categoryList { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 4px; }
+.catBtn {
+  width: 100%;
+  text-align: left;
+  padding: 10px 12px;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  color: var(--text-body);
+  font-family: var(--font-body);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.catBtn:hover { background: rgba(0,149,235,0.06); color: var(--primary); padding-left: 16px; }
+.recentPost { display: flex; gap: 12px; align-items: flex-start; padding: 10px 0; border-bottom: 1px solid var(--grey-light); text-decoration: none; transition: var(--transition); }
+.recentPost:last-child { border-bottom: none; }
+.recentPost:hover .recentTitle { color: var(--primary); }
+.recentDot { width: 8px; height: 8px; border-radius: 50%; background: var(--primary); flex-shrink: 0; margin-top: 6px; }
+.recentTitle { font-size: 0.875rem; font-weight: 600; color: var(--text-dark); line-height: 1.4; margin-bottom: 4px; transition: var(--transition); }
+.recentDate { font-size: 0.75rem; color: var(--text-light); }
+.ctaWidget {
+  background: var(--gradient-hero);
+  border-radius: var(--radius-md);
+  padding: 28px;
+  text-align: center;
+}
+.ctaWidget h3 { font-size: 1.0625rem; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+.ctaWidget p { font-size: 0.875rem; color: rgba(255,255,255,0.6); margin-bottom: 20px; }
+
+@media (max-width: 900px) {
+  .layout { grid-template-columns: 1fr; }
+  .card { grid-template-columns: 1fr; }
+  .imageWrapper { aspect-ratio: 16/9; }
+  .sidebar { order: -1; }
+}

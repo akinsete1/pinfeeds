@@ -1,0 +1,128 @@
+.process {
+  background: var(--white);
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  position: relative;
+}
+
+.step {
+  position: relative;
+  padding: 0 16px;
+}
+
+.stepInner {
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.connector {
+  position: absolute;
+  top: 56px;
+  right: -24px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--primary);
+}
+
+.connectorLine {
+  width: 32px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--grey-light), var(--primary));
+  border-radius: 1px;
+}
+
+.connectorArrow {
+  font-size: 1.25rem;
+  color: var(--primary);
+  line-height: 1;
+}
+
+.stepNumber {
+  font-family: var(--font-heading);
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: rgba(0, 149, 235, 0.06);
+  line-height: 1;
+  margin-bottom: -20px;
+  letter-spacing: -0.05em;
+}
+
+.iconCircle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--grey-bg);
+  border: 3px solid var(--grey-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  transition: var(--transition);
+  position: relative;
+}
+
+.iconCircle::before {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 2px dashed rgba(0, 149, 235, 0.2);
+  animation: spin-slow 12s linear infinite;
+}
+
+.step:hover .iconCircle {
+  background: var(--gradient-primary);
+  border-color: var(--primary);
+  box-shadow: 0 12px 40px rgba(0, 149, 235, 0.35);
+  transform: scale(1.05);
+}
+
+.step:hover .icon {
+  filter: brightness(10);
+}
+
+.icon {
+  font-size: 1.75rem;
+  transition: var(--transition);
+}
+
+.stepTitle {
+  font-family: var(--font-heading);
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 12px;
+  transition: var(--transition);
+}
+
+.step:hover .stepTitle {
+  color: var(--primary);
+}
+
+.stepDesc {
+  font-size: 0.875rem;
+  color: var(--text-body);
+  line-height: 1.75;
+}
+
+@media (max-width: 900px) {
+  .steps {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+  }
+  .connector { display: none; }
+}
+
+@media (max-width: 500px) {
+  .steps {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}

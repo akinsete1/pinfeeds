@@ -1,66 +1,42 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import type { Metadata } from 'next';
+import HeroSection from '@/components/home/HeroSection';
+import InfoBar from '@/components/home/InfoBar';
+import AboutSection from '@/components/home/AboutSection';
+import ServicesSection from '@/components/home/ServicesSection';
+import ProcessSection from '@/components/home/ProcessSection';
+import PortfolioSection from '@/components/home/PortfolioSection';
+import BlogSection from '@/components/home/BlogSection';
+import FaqSection from '@/components/home/FaqSection';
+import CtaSection from '@/components/home/CtaSection';
 
-export default function Home() {
+export const metadata: Metadata = {
+  title: 'Pinfeeds Digital Agency Limited — Premier IT Solutions in Nigeria',
+  description:
+    'Pinfeeds Digital Agency Limited is a top-rated IT company offering website development, software development, mobile app development, digital marketing, UX/UI design, and cloud services. 8+ years of excellence.',
+  alternates: {
+    canonical: 'https://pinfeeds.org',
+  },
+};
+import { getPortfolioItems } from '@/data/portfolio';
+import { getHomePageData } from '@/data/pages';
+
+export const revalidate = 60;
+
+export default async function HomePage() {
+  const portfolioItems = await getPortfolioItems();
+  const pageData = await getHomePageData();
+
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.tsx file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+    <>
+      <HeroSection phrases={pageData.heroPhrases} />
+      <InfoBar />
+      <AboutSection summary={pageData.aboutSummary} />
+      <ServicesSection />
+      <ProcessSection steps={pageData.processSteps} />
+      <PortfolioSection initialItems={portfolioItems} />
+      <BlogSection />
+      <FaqSection faqs={pageData.faqs} />
+      <CtaSection title={pageData.ctaTitle} subtitle={pageData.ctaSubtitle} />
+    </>
   );
 }

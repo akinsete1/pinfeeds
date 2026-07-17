@@ -1,0 +1,137 @@
+.hero {
+  position: relative;
+  padding-top: 160px;
+  padding-bottom: 80px;
+  background: var(--gradient-hero);
+  min-height: 50vh;
+  display: flex;
+  align-items: center;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+}
+
+.category {
+  display: inline-block;
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  color: var(--white);
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+
+.title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--white);
+  margin-bottom: 24px;
+}
+
+.desc {
+  font-size: 1.25rem;
+  color: var(--grey-300);
+  line-height: 1.6;
+}
+
+.metaGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 32px;
+  padding: 64px 0;
+  border-bottom: 1px solid var(--grey-800);
+}
+
+.metaItem h3 {
+  font-size: 0.875rem;
+  color: var(--grey-400);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+}
+
+.metaItem p {
+  font-size: 1.125rem;
+  color: var(--white);
+  font-weight: 600;
+}
+
+.techList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.techTag {
+  padding: 4px 12px;
+  background: var(--grey-800);
+  border-radius: 16px;
+  font-size: 0.875rem;
+  color: var(--grey-300);
+}
+
+.contentWrapper {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 64px 0;
+}
+
+.richText {
+  color: var(--grey-300);
+  line-height: 1.8;
+  font-size: 1.125rem;
+}
+
+.richText p {
+  margin-bottom: 24px;
+}
+
+.richText h2 {
+  font-size: 2rem;
+  color: var(--white);
+  margin: 48px 0 24px;
+}
+
+.richText h3 {
+  font-size: 1.5rem;
+  color: var(--white);
+  margin: 32px 0 16px;
+}
+
+.richText ul, .richText ol {
+  margin-bottom: 24px;
+  padding-left: 24px;
+}
+
+.richText li {
+  margin-bottom: 8px;
+}
+
+.imageShowcase {
+  margin: 64px 0;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 24px 48px rgba(0,0,0,0.4);
+  position: relative;
+  aspect-ratio: 16/9;
+}
+
+.imageShowcase img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.actions {
+  display: flex;
+  gap: 16px;
+  margin-top: 48px;
+  padding-top: 48px;
+  border-bottom: none;
+}
