@@ -153,9 +153,9 @@ export default function Footer() {
               © {year} Pinfeeds Digital Agency Limited. All rights reserved.
             </p>
             <div className={styles.bottomLinks}>
-              <Link href="/contact" className={styles.bottomLink}>Privacy Policy</Link>
+              <Link href="/privacy-policy" className={styles.bottomLink}>Privacy Policy</Link>
               <span className={styles.dot}>·</span>
-              <Link href="/contact" className={styles.bottomLink}>Terms of Service</Link>
+              <Link href="/terms-of-service" className={styles.bottomLink}>Terms of Service</Link>
             </div>
           </div>
         </div>
