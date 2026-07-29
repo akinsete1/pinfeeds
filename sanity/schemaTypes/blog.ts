@@ -56,5 +56,42 @@ export const blogType = defineType({
       type: 'image',
       options: { hotspot: true },
     }),
+
+    // ── SEO Fields ──────────────────────────────────────────
+    defineField({
+      name: 'metaTitle',
+      title: 'Meta Title',
+      type: 'string',
+      description: 'Custom title for search engines (50-60 characters ideal). Falls back to the post title if left empty.',
+      group: 'seo',
+      validation: (Rule) => Rule.max(70).warning('Keep the meta title under 70 characters for best results.'),
+    }),
+    defineField({
+      name: 'metaDescription',
+      title: 'Meta Description',
+      type: 'text',
+      rows: 3,
+      description: 'A compelling summary shown in Google search results (120-160 characters ideal). Falls back to excerpt if left empty.',
+      group: 'seo',
+      validation: (Rule) => Rule.max(170).warning('Keep the meta description under 170 characters for best results.'),
+    }),
+    defineField({
+      name: 'keywords',
+      title: 'SEO Keywords',
+      type: 'array',
+      of: [{ type: 'string' }],
+      description: 'Relevant keywords/phrases for this post (e.g. "web design Lagos", "AI development"). Add 5-10 targeted keywords.',
+      group: 'seo',
+      options: {
+        layout: 'tags',
+      },
+    }),
+  ],
+  groups: [
+    {
+      name: 'seo',
+      title: 'SEO',
+      icon: () => '🔍',
+    },
   ],
 })
