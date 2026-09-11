@@ -10,14 +10,14 @@ import TawkToChat from "@/components/layout/TawkToChat";
 const inter = Inter({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-body",
+  variable: "--font-inter",
 });
 
 const poppins = Poppins({
   weight: ["300", "400", "500", "600", "700", "800", "900"],
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-heading",
+  variable: "--font-poppins",
 });
 
 export const revalidate = 60;
@@ -95,6 +95,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://pinfeeds.org",
   },
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+  },
 };
 
 export default function RootLayout({
@@ -114,6 +117,7 @@ export default function RootLayout({
                 "@context": "https://schema.org",
                 "@type": ["Organization", "LocalBusiness"],
                 name: "Pinfeeds Digital Agency Limited",
+                alternateName: ["Pinfeeds", "Pinfeeds Digital Agency", "Pinfeeds Lagos", "Pinfeeds Academy"],
                 url: "https://pinfeeds.org",
                 logo: "https://pinfeeds.org/logo.png",
                 image: "https://pinfeeds.org/og-image.jpg",
@@ -171,7 +175,8 @@ export default function RootLayout({
               {
                 "@context": "https://schema.org",
                 "@type": "WebSite",
-                name: "Pinfeeds Digital Agency Limited",
+                name: "Pinfeeds",
+                alternateName: ["Pinfeeds Digital Agency", "Pinfeeds Digital Agency Limited", "Pinfeeds Lagos"],
                 url: "https://pinfeeds.org",
                 potentialAction: {
                   "@type": "SearchAction",
