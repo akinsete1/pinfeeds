@@ -1,5 +1,6 @@
 import { client } from '@/sanity/lib/client';
 import { urlForImage } from '@/sanity/lib/image';
+import type { Image as SanityImage } from 'sanity';
 
 export interface BlogPost {
   id: string;
@@ -10,7 +11,7 @@ export interface BlogPost {
   author: string;
   date: string;
   readTime: string;
-  image?: any;
+  image?: SanityImage;
   imageUrl?: string;
   href: string;
 }
@@ -86,7 +87,7 @@ export const fallbackBlog: BlogPost[] = [
 
 export async function getBlogPosts(): Promise<BlogPost[]> {
   try {
-    const posts = await client.fetch<any[]>(`
+    const posts = await client.fetch<Array<Omit<BlogPost, 'href' | 'imageUrl'> & { image?: SanityImage }>>(`
       *[_type == "blog"] | order(date desc) {
         "id": _id, title, "slug": slug.current, excerpt, category, author, date, readTime, image
       }

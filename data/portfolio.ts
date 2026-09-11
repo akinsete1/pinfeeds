@@ -1,5 +1,7 @@
 import { client } from '@/sanity/lib/client';
 import { urlForImage } from '@/sanity/lib/image';
+import type { Image as SanityImage } from 'sanity';
+import type { ArbitraryTypedObject } from '@portabletext/types';
 
 export interface PortfolioItem {
   id: string;
@@ -7,12 +9,12 @@ export interface PortfolioItem {
   category: string[];
   categoryLabel: string;
   description: string;
-  image?: any;
+  image?: SanityImage;
   imageUrl?: string;
   year: string;
   tech: string[];
   href: string;
-  detailedContent?: any[];
+  detailedContent?: ArbitraryTypedObject[];
 }
 
 export const portfolioCategories = [

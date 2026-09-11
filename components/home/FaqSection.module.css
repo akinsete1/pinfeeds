@@ -1,65 +1,95 @@
 .faq {
-  padding: 6rem 0;
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
+  padding: 110px 0;
+  background-color: #090e1a;
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+}
+
+.faq::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  height: 500px;
+  background: radial-gradient(ellipse, rgba(0, 149, 235, 0.08) 0%, transparent 70%);
+  pointer-events: none;
 }
 
 .heading {
   text-align: center;
   max-width: 700px;
-  margin: 0 auto 4rem;
+  margin: 0 auto 3.5rem;
+  position: relative;
+  z-index: 2;
 }
 
 .tag {
   display: inline-block;
-  font-size: 0.875rem;
-  font-weight: 600;
+  font-size: 0.8rem;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 2px;
-  color: var(--accent);
+  letter-spacing: 0.1em;
+  color: #38bdf8;
+  background: rgba(0, 149, 235, 0.15);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  padding: 6px 18px;
+  border-radius: 50px;
   margin-bottom: 1rem;
 }
 
 .title {
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(2rem, 3.5vw, 2.75rem);
   font-weight: 800;
   margin-bottom: 1rem;
   font-family: var(--font-heading);
+  color: #ffffff;
 }
 
 .title span {
-  color: var(--accent);
+  background: linear-gradient(135deg, #38bdf8 0%, #0095eb 50%, #818cf8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .desc {
-  color: var(--text-secondary);
-  font-size: 1.125rem;
-  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 1.0625rem;
+  line-height: 1.7;
 }
 
 .accordion {
-  max-width: 800px;
+  max-width: 820px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.25rem;
+  position: relative;
+  z-index: 2;
 }
 
 .item {
-  background: var(--bg-card);
-  border: 1px solid var(--border-color);
-  border-radius: 12px;
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
   overflow: hidden;
-  transition: all 0.3s ease;
+  transition: var(--transition);
 }
 
 .item:hover {
-  border-color: var(--accent);
-  box-shadow: 0 4px 20px rgba(0, 149, 235, 0.1);
+  border-color: rgba(56, 189, 248, 0.35);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 .item.open {
-  border-color: var(--accent);
+  border-color: rgba(56, 189, 248, 0.5);
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 149, 235, 0.15);
 }
 
 .questionBtn {
@@ -72,22 +102,30 @@
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
-  color: var(--text-primary);
+  color: #ffffff;
   font-family: var(--font-heading);
-  font-size: 1.25rem;
-  font-weight: 600;
-  transition: color 0.3s ease;
+  font-size: 1.15rem;
+  font-weight: 700;
+  transition: color 0.25s ease;
+  gap: 16px;
 }
 
 .questionBtn:hover {
-  color: var(--accent);
+  color: #38bdf8;
 }
 
 .icon {
   position: relative;
-  width: 24px;
-  height: 24px;
+  width: 28px;
+  height: 28px;
   flex-shrink: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #38bdf8;
 }
 
 .icon::before,
@@ -99,16 +137,16 @@
 }
 
 .icon::before {
-  top: 11px;
-  left: 4px;
-  right: 4px;
+  top: 13px;
+  left: 8px;
+  right: 8px;
   height: 2px;
 }
 
 .icon::after {
-  top: 4px;
-  bottom: 4px;
-  left: 11px;
+  top: 8px;
+  bottom: 8px;
+  left: 13px;
   width: 2px;
 }
 
@@ -118,7 +156,7 @@
 }
 
 .open .questionBtn {
-  color: var(--accent);
+  color: #38bdf8;
 }
 
 .answerWrapper {
@@ -137,17 +175,17 @@
 
 .answerInner p {
   padding: 0 1.5rem 1.5rem;
-  color: var(--text-secondary);
-  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.75;
   font-size: 1rem;
 }
 
 @media (max-width: 768px) {
   .faq {
-    padding: 4rem 0;
+    padding: 80px 0;
   }
   .questionBtn {
-    font-size: 1.125rem;
+    font-size: 1.05rem;
     padding: 1.25rem;
   }
   .answerInner p {

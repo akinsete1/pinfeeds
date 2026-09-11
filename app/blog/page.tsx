@@ -120,7 +120,7 @@ export default async function BlogPage() {
               {/* CTA Widget */}
               <div className={styles.ctaWidget}>
                 <h3>Ready to Work With Us?</h3>
-                <p>Let's discuss your next digital project.</p>
+                <p>Let&apos;s discuss your next digital project.</p>
                 <Link href="/contact" className="btn btn-primary" style={{ width: '100%', justifyContent: 'center' }}>
                   Contact Us
                 </Link>

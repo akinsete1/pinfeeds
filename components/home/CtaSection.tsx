@@ -26,11 +26,11 @@ export default function CtaSection({ title, subtitle }: { title?: string, subtit
           </div>
 
           <div className={styles.actions}>
-            <Link href="/contact" className="btn btn-white btn-lg" id="cta-contact">
+            <Link href="/contact" className="btn btn-primary btn-lg" id="cta-contact">
               Start Your Project
             </Link>
-            <Link href="/services" className="btn btn-outline-white btn-lg" id="cta-services">
-              Explore Services
+            <Link href="/academy" className="btn btn-outline-white btn-lg" id="cta-academy">
+              Explore IT Academy
             </Link>
           </div>
 

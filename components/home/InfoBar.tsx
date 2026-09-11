@@ -30,7 +30,9 @@ export default function InfoBar() {
             key={item.title}
             className={`${styles.item} ${item.dark ? styles.dark : styles.accent}`}
           >
-            <span className={styles.icon} aria-hidden="true">{item.icon}</span>
+            <div className={styles.iconBox}>
+              <span className={styles.icon} aria-hidden="true">{item.icon}</span>
+            </div>
             <div>
               <h2 className={styles.title}>{item.title}</h2>
               <p className={styles.subtitle}>{item.subtitle}</p>

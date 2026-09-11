@@ -1,10 +1,25 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useMemo } from 'react';
 import Link from 'next/link';
 import styles from './HeroSection.module.css';
 
+interface FloatingElement {
+  label: string;
+  top: string;
+  left?: string;
+  right?: string;
+  delay: string;
+}
 
+const FLOATING_ELEMENTS: FloatingElement[] = [
+  { label: '</>', top: '20%', left: '5%', delay: '0s' },
+  { label: '{ }', top: '60%', left: '2%', delay: '1s' },
+  { label: '#', top: '30%', right: '4%', delay: '0.5s' },
+  { label: '[]', top: '70%', right: '6%', delay: '1.5s' },
+  { label: '( )', top: '80%', left: '12%', delay: '2s' },
+  { label: '=>', top: '15%', right: '15%', delay: '0.7s' },
+];
 
 export default function HeroSection({ phrases }: { phrases: string[] }) {
   const [phraseIndex, setPhraseIndex] = useState(0);
@@ -13,8 +28,11 @@ export default function HeroSection({ phrases }: { phrases: string[] }) {
   const [countersVisible, setCountersVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
-  // Fallback to hardcoded if empty
-  const activePhrases = phrases?.length > 0 ? phrases : ['IT Solutions'];
+  // Fallback to hardcoded if empty - memoized to prevent dependency churn
+  const activePhrases = useMemo(
+    () => (phrases?.length > 0 ? phrases : ['IT Solutions', 'Web & Mobile Apps', 'Tech Training & Academy', 'Cloud & AI Engineering']),
+    [phrases]
+  );
 
   // Typewriter effect
   useEffect(() => {
@@ -31,13 +49,15 @@ export default function HeroSection({ phrases }: { phrases: string[] }) {
       if (displayText.length > 0) {
         timer = setTimeout(() => setDisplayText(displayText.slice(0, -1)), 45);
       } else {
-        setIsDeleting(false);
-        setPhraseIndex((prev) => (prev + 1) % activePhrases.length);
+        timer = setTimeout(() => {
+          setIsDeleting(false);
+          setPhraseIndex((prev) => (prev + 1) % activePhrases.length);
+        }, 100);
       }
     }
 
     return () => clearTimeout(timer);
-  }, [displayText, isDeleting, phraseIndex]);
+  }, [displayText, isDeleting, phraseIndex, activePhrases]);
 
   // Counter animation trigger
   useEffect(() => {
@@ -67,21 +87,14 @@ export default function HeroSection({ phrases }: { phrases: string[] }) {
 
       {/* Floating Code Elements */}
       <div className={styles.floatingElements} aria-hidden="true">
-        {[
-          { label: '</>', top: '20%', left: '5%', delay: '0s' },
-          { label: '{ }', top: '60%', left: '2%', delay: '1s' },
-          { label: '#', top: '30%', right: '4%', delay: '0.5s' },
-          { label: '[]', top: '70%', right: '6%', delay: '1.5s' },
-          { label: '( )', top: '80%', left: '12%', delay: '2s' },
-          { label: '=>', top: '15%', right: '15%', delay: '0.7s' },
-        ].map((el, i) => (
+        {FLOATING_ELEMENTS.map((el, i) => (
           <div
             key={i}
             className={styles.floatingEl}
             style={{
               top: el.top,
-              left: (el as any).left,
-              right: (el as any).right,
+              left: el.left,
+              right: el.right,
               animationDelay: el.delay,
             }}
           >
@@ -95,7 +108,7 @@ export default function HeroSection({ phrases }: { phrases: string[] }) {
         <div className={styles.content}>
           <div className={styles.tag} aria-label="Company tagline">
             <span className={styles.tagDot} />
-            Pinfeeds Digital Agency Limited
+            Pinfeeds Digital Agency &bull; IT Academy Admissions Open
           </div>
 
           <h1 className={styles.headline}>
@@ -105,12 +118,11 @@ export default function HeroSection({ phrases }: { phrases: string[] }) {
               <span className={styles.cursor} aria-hidden="true">|</span>
             </span>
             <br />
-            <span className={styles.subHeadline}>for Your Business</span>
+            <span className={styles.subHeadline}>for Your Future &amp; Business</span>
           </h1>
 
           <p className={styles.description}>
-            We are a premier IT solutions company with 8+ years of experience empowering
-            businesses with cutting-edge digital solutions. Trusted by 50+ clients across Africa and beyond.
+            We build high-performance software, websites, and mobile applications, and train the next generation of world-class tech leaders at Pinfeeds Academy.
           </p>
 
           <div className={styles.actions}>
@@ -120,7 +132,10 @@ export default function HeroSection({ phrases }: { phrases: string[] }) {
                 <path d="M4 10h12M12 6l4 4-4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </Link>
-            <Link href="/portfolio" className="btn btn-outline-white btn-lg" id="hero-cta-secondary">
+            <Link href="/academy" className="btn btn-outline-white btn-lg" id="hero-cta-academy">
+              🎓 Explore IT Courses
+            </Link>
+            <Link href="/portfolio" className="btn btn-outline-white btn-lg" id="hero-cta-secondary" style={{ opacity: 0.85 }}>
               View Our Work
             </Link>
           </div>

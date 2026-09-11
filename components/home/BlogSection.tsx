@@ -8,7 +8,7 @@ export default async function BlogSection() {
   const posts = blogPosts.slice(0, 3);
 
   return (
-    <section className={`section section-grey ${styles.blog}`} id="blog" aria-labelledby="blog-heading">
+    <section className={`section ${styles.blog}`} id="blog" aria-labelledby="blog-heading">
       <div className="container">
         <div className="section-heading">
           <span className="section-tag">Our Blog</span>

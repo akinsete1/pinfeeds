@@ -79,9 +79,9 @@
 }
 
 .desc {
-  font-size: 1.0625rem;
-  color: rgba(255,255,255,0.6);
-  max-width: 560px;
+  font-size: 1.125rem;
+  color: rgba(255, 255, 255, 0.88);
+  max-width: 640px;
   margin: 0 auto 40px;
   line-height: 1.8;
 }
@@ -90,7 +90,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 16px;
+  gap: 18px;
   flex-wrap: wrap;
   margin-bottom: 48px;
 }
@@ -99,7 +99,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 32px;
+  gap: 16px;
   flex-wrap: wrap;
 }
 
@@ -108,8 +108,13 @@
   align-items: center;
   gap: 8px;
   font-size: 0.875rem;
-  font-weight: 600;
-  color: rgba(255,255,255,0.6);
+  font-weight: 700;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 8px 18px;
+  border-radius: 50px;
+  backdrop-filter: blur(8px);
 }
 
 .badge span:first-child {
@@ -117,6 +122,6 @@
 }
 
 @media (max-width: 600px) {
-  .badges { gap: 16px; }
-  .badge { font-size: 0.8125rem; }
+  .badges { gap: 12px; }
+  .badge { font-size: 0.8125rem; padding: 6px 14px; }
 }

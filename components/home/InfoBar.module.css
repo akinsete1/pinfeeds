@@ -1,5 +1,9 @@
 .infoBar {
-  background: var(--dark-3);
+  background: #090e1a;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  position: relative;
+  overflow: hidden;
 }
 
 .grid {
@@ -11,9 +15,10 @@
   display: flex;
   align-items: center;
   gap: 20px;
-  padding: 36px 40px;
-  border-right: 1px solid rgba(255,255,255,0.06);
+  padding: 32px 40px;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
   transition: var(--transition);
+  position: relative;
 }
 
 .item:last-child {
@@ -21,53 +26,72 @@
 }
 
 .item:hover {
-  background: rgba(255,255,255,0.03);
+  background: rgba(255, 255, 255, 0.04);
 }
 
 .dark {
-  background: var(--dark-3);
+  background: transparent;
 }
 
 .accent {
-  background: var(--primary);
+  background: linear-gradient(135deg, rgba(0, 149, 235, 0.15) 0%, rgba(139, 92, 246, 0.15) 100%);
+  border-left: 1px solid rgba(0, 149, 235, 0.3);
+  border-right: 1px solid rgba(0, 149, 235, 0.3);
 }
 
-.accent .title,
-.accent .subtitle {
-  color: var(--white);
-}
-
-.icon {
-  font-size: 2rem;
+.iconBox {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
   flex-shrink: 0;
-  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3));
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  transition: var(--transition);
+}
+
+.item:hover .iconBox {
+  transform: scale(1.08) rotate(3deg);
+  border-color: rgba(56, 189, 248, 0.5);
+  box-shadow: 0 0 20px rgba(0, 149, 235, 0.3);
 }
 
 .title {
   font-family: var(--font-heading);
-  font-size: 1.0625rem;
-  font-weight: 700;
-  color: var(--white);
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #ffffff;
   margin-bottom: 4px;
+  letter-spacing: -0.01em;
 }
 
 .subtitle {
   font-size: 0.875rem;
-  color: rgba(255,255,255,0.6);
+  color: rgba(255, 255, 255, 0.75);
   margin: 0;
+  font-weight: 500;
+}
+
+.accent .title {
+  color: #38bdf8;
 }
 
 .accent .subtitle {
-  color: rgba(255,255,255,0.8);
+  color: #ffffff;
+  font-weight: 600;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .grid {
     grid-template-columns: 1fr;
   }
   .item {
     border-right: none;
-    border-bottom: 1px solid rgba(255,255,255,0.06);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     padding: 24px;
   }
   .item:last-child {

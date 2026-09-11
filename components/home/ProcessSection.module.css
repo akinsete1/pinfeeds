@@ -1,17 +1,66 @@
 .process {
-  background: var(--white);
+  background: #070b14;
+  padding: 110px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.process::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 900px;
+  height: 500px;
+  background: radial-gradient(ellipse, rgba(0, 149, 235, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Heading Overrides */
+.process :global(.section-title) {
+  color: #ffffff !important;
+}
+
+.process :global(.section-title) span {
+  background: linear-gradient(135deg, #38bdf8 0%, #0095eb 50%, #818cf8 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+}
+
+.process :global(.section-desc) {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+.process :global(.section-tag) {
+  color: #38bdf8 !important;
+  background: rgba(0, 149, 235, 0.15) !important;
+  border-color: rgba(56, 189, 248, 0.3) !important;
 }
 
 .steps {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 0;
+  gap: 20px;
   position: relative;
+  z-index: 2;
 }
 
 .step {
   position: relative;
-  padding: 0 16px;
+  padding: 32px 20px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-lg);
+  transition: var(--transition);
+}
+
+.step:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(56, 189, 248, 0.4);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(0, 149, 235, 0.15);
 }
 
 .stepInner {
@@ -22,50 +71,59 @@
 
 .connector {
   position: absolute;
-  top: 56px;
+  top: 70px;
   right: -24px;
-  z-index: 2;
+  z-index: 5;
   display: flex;
   align-items: center;
   gap: 4px;
-  color: var(--primary);
+  color: #38bdf8;
 }
 
 .connectorLine {
-  width: 32px;
+  width: 28px;
   height: 2px;
-  background: linear-gradient(90deg, var(--grey-light), var(--primary));
-  border-radius: 1px;
+  background: linear-gradient(90deg, rgba(0, 149, 235, 0.3), #00d4ff);
+  border-radius: 2px;
+  box-shadow: 0 0 8px #00d4ff;
 }
 
 .connectorArrow {
   font-size: 1.25rem;
-  color: var(--primary);
+  color: #00d4ff;
   line-height: 1;
+  font-weight: 800;
 }
 
 .stepNumber {
   font-family: var(--font-heading);
-  font-size: 3.5rem;
+  font-size: 3.2rem;
   font-weight: 900;
-  color: rgba(0, 149, 235, 0.06);
+  color: rgba(56, 189, 248, 0.15);
   line-height: 1;
-  margin-bottom: -20px;
+  margin-bottom: -15px;
   letter-spacing: -0.05em;
+  transition: var(--transition);
+}
+
+.step:hover .stepNumber {
+  color: rgba(56, 189, 248, 0.35);
+  transform: translateY(-3px);
 }
 
 .iconCircle {
-  width: 80px;
-  height: 80px;
+  width: 76px;
+  height: 76px;
   border-radius: 50%;
-  background: var(--grey-bg);
-  border: 3px solid var(--grey-light);
+  background: #0f172a;
+  border: 2px solid rgba(56, 189, 248, 0.3);
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto 20px;
   transition: var(--transition);
   position: relative;
+  box-shadow: 0 0 25px rgba(0, 149, 235, 0.2);
 }
 
 .iconCircle::before {
@@ -73,19 +131,15 @@
   position: absolute;
   inset: -6px;
   border-radius: 50%;
-  border: 2px dashed rgba(0, 149, 235, 0.2);
+  border: 2px dashed rgba(56, 189, 248, 0.3);
   animation: spin-slow 12s linear infinite;
 }
 
 .step:hover .iconCircle {
   background: var(--gradient-primary);
-  border-color: var(--primary);
-  box-shadow: 0 12px 40px rgba(0, 149, 235, 0.35);
-  transform: scale(1.05);
-}
-
-.step:hover .icon {
-  filter: brightness(10);
+  border-color: #38bdf8;
+  box-shadow: 0 0 35px rgba(0, 149, 235, 0.6);
+  transform: scale(1.08);
 }
 
 .icon {
@@ -95,34 +149,34 @@
 
 .stepTitle {
   font-family: var(--font-heading);
-  font-size: 1.0625rem;
-  font-weight: 700;
-  color: var(--text-dark);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #ffffff;
   margin-bottom: 12px;
   transition: var(--transition);
 }
 
 .step:hover .stepTitle {
-  color: var(--primary);
+  color: #38bdf8;
 }
 
 .stepDesc {
-  font-size: 0.875rem;
-  color: var(--text-body);
-  line-height: 1.75;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.7;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
   .steps {
     grid-template-columns: repeat(2, 1fr);
-    gap: 40px;
+    gap: 32px;
   }
   .connector { display: none; }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 600px) {
   .steps {
     grid-template-columns: 1fr;
-    gap: 32px;
+    gap: 24px;
   }
 }

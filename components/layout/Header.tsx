@@ -9,6 +9,7 @@ const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/about', label: 'About' },
   { href: '/services', label: 'Services' },
+  { href: '/academy', label: 'Academy', isBadge: true },
   { href: '/portfolio', label: 'Portfolio' },
   { href: '/blog', label: 'Blog' },
   { href: '/contact', label: 'Contact' },
@@ -18,16 +19,19 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
+  const [prevPath, setPrevPath] = useState(pathname);
+
+  // Close mobile nav on route change during render to avoid cascading renders
+  if (prevPath !== pathname) {
+    setPrevPath(pathname);
+    setMobileOpen(false);
+  }
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  useEffect(() => {
-    setMobileOpen(false);
-  }, [pathname]);
 
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? 'hidden' : '';
@@ -70,6 +74,7 @@ export default function Header() {
                   className={`${styles.navLink} ${pathname === link.href ? styles.active : ''}`}
                 >
                   {link.label}
+                  {link.isBadge && <span className={styles.navBadge}>New</span>}
                 </Link>
               </li>
             ))}
@@ -104,7 +109,8 @@ export default function Header() {
                   href={link.href}
                   className={`${styles.mobileNavLink} ${pathname === link.href ? styles.active : ''}`}
                 >
-                  {link.label}
+                  <span>{link.label}</span>
+                  {link.isBadge && <span className={styles.mobileNavBadge}>New Courses</span>}
                 </Link>
               </li>
             ))}

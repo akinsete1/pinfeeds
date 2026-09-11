@@ -5,6 +5,7 @@ import AboutSection from '@/components/home/AboutSection';
 import ServicesSection from '@/components/home/ServicesSection';
 import ProcessSection from '@/components/home/ProcessSection';
 import PortfolioSection from '@/components/home/PortfolioSection';
+import AcademySpotlight from '@/components/home/AcademySpotlight';
 import BlogSection from '@/components/home/BlogSection';
 import FaqSection from '@/components/home/FaqSection';
 import CtaSection from '@/components/home/CtaSection';
@@ -76,6 +77,7 @@ export default async function HomePage() {
       <InfoBar />
       <AboutSection summary={pageData.aboutSummary} />
       <ServicesSection />
+      <AcademySpotlight />
       <ProcessSection steps={pageData.processSteps} />
       <PortfolioSection initialItems={portfolioItems} />
       <BlogSection />

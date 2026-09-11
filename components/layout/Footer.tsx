@@ -4,6 +4,16 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import styles from './Footer.module.css';
 
+const itCourses = [
+  { href: '/academy#course-fullstack-web-development', label: 'Full-Stack Web Dev' },
+  { href: '/academy#course-mobile-app-development', label: 'Mobile App Dev' },
+  { href: '/academy#course-ui-ux-design-product-strategy', label: 'UI/UX Design' },
+  { href: '/academy#course-data-science-ai-machine-learning', label: 'Data Science & AI' },
+  { href: '/academy#course-cloud-computing-devops-engineering', label: 'Cloud & DevOps' },
+  { href: '/academy#course-cybersecurity-ethical-hacking', label: 'Cybersecurity' },
+  { href: '/academy', label: 'Browse All Courses →' },
+];
+
 const services = [
   'Website Development',
   'Software Development',
@@ -19,6 +29,7 @@ const quickLinks = [
   { href: '/', label: 'Home' },
   { href: '/about', label: 'About Us' },
   { href: '/services', label: 'Our Services' },
+  { href: '/academy', label: 'IT Academy' },
   { href: '/portfolio', label: 'Portfolio' },
   { href: '/blog', label: 'Blog' },
   { href: '/contact', label: 'Contact Us' },
@@ -98,6 +109,21 @@ export default function Footer() {
                     <Link href={l.href} className={styles.footerLink}>
                       <span className={styles.arrow}>›</span>
                       {l.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* IT Academy Courses */}
+            <div className={styles.col}>
+              <h3 className={styles.colTitle}>IT Academy</h3>
+              <ul className={styles.linkList}>
+                {itCourses.map((c) => (
+                  <li key={c.label}>
+                    <Link href={c.href} className={styles.footerLink}>
+                      <span className={styles.arrow}>›</span>
+                      {c.label}
                     </Link>
                   </li>
                 ))}

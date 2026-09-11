@@ -5,8 +5,29 @@ import { PortableText } from '@portabletext/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import type { Image as SanityImage } from 'sanity';
 import styles from './blogDetail.module.css';
-import { fallbackBlog } from '@/data/blog';
+
+interface SanityPost {
+  _id?: string;
+  _createdAt?: string;
+  _updatedAt?: string;
+  title: string;
+  excerpt?: string;
+  metaTitle?: string;
+  metaDescription?: string;
+  keywords?: string[];
+  image?: SanityImage;
+  imageUrl?: string;
+  category?: string;
+  publishedAt?: string;
+  author?: string;
+  date?: string;
+  readTime?: string;
+  content?: Parameters<typeof PortableText>[0]['value'];
+  body?: Parameters<typeof PortableText>[0]['value'];
+  tags?: string[];
+}
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -18,7 +39,7 @@ export const revalidate = 60;
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const resolvedParams = await params;
 
-  const post = await client.fetch(
+  const post = await client.fetch<SanityPost | null>(
     `*[_type == "blog" && slug.current == $slug][0]{
       title, excerpt, metaTitle, metaDescription, keywords, image, category
     }`,
@@ -68,7 +89,7 @@ export default async function BlogDetailPage({ params }: Props) {
   const resolvedParams = await params;
   
   // Try to find in Sanity first
-  let post: any = await client.fetch(
+  const post = await client.fetch<SanityPost | null>(
     `*[_type == "blog" && slug.current == $slug][0]{
       ...,
       metaTitle, metaDescription, keywords
@@ -165,13 +186,13 @@ export default async function BlogDetailPage({ params }: Props) {
       <section className={styles.contentSection}>
         <div className={`container ${styles.contentContainer}`}>
           <div className={styles.portableText}>
-            {post.content && (
+            {post.content ? (
               <PortableText value={post.content} />
-            )}
+            ) : null}
           </div>
           
           {/* Keywords tags for internal linking / visibility */}
-          {post.keywords?.length > 0 && (
+          {post.keywords && post.keywords.length > 0 ? (
             <div style={{ marginTop: '40px', display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
               {post.keywords.map((keyword: string) => (
                 <span
@@ -189,7 +210,7 @@ export default async function BlogDetailPage({ params }: Props) {
                 </span>
               ))}
             </div>
-          )}
+          ) : null}
 
           <div style={{ marginTop: '80px', textAlign: 'center' }}>
             <Link href="/blog" className="btn btn-outline">
@@ -204,7 +225,7 @@ export default async function BlogDetailPage({ params }: Props) {
 
 // Ensure dynamic routes are statically generated
 export async function generateStaticParams() {
-  const posts = await client.fetch<any[]>(`*[_type == "blog"]{ "slug": slug.current }`);
+  const posts = await client.fetch<{ slug: string }[]>(`*[_type == "blog"]{ "slug": slug.current }`);
   
   const sanityParams = posts.map((post) => ({
     slug: post.slug,

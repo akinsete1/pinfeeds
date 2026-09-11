@@ -5,7 +5,7 @@ import styles from './ServicesSection.module.css';
 export default async function ServicesSection() {
   const services = await getServices();
   return (
-    <section className={`section section-grey ${styles.services}`} id="services" aria-labelledby="services-heading">
+    <section className={`section ${styles.services}`} id="services" aria-labelledby="services-heading">
       <div className="container">
         <div className="section-heading">
           <span className="section-tag">Our Services</span>
@@ -61,7 +61,7 @@ export default async function ServicesSection() {
         </div>
 
         <div className={styles.footer}>
-          <p>Don't hesitate, contact us for better help and services.</p>
+          <p>Don&apos;t hesitate, contact us for better help and services.</p>
           <Link href="/services" className="btn btn-primary" id="services-view-all">
             View All Services
           </Link>

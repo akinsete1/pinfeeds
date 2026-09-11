@@ -10,8 +10,8 @@
 
 .grid {
   display: grid;
-  grid-template-columns: 1.6fr 1fr 1fr 1.3fr;
-  gap: 48px;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr 1.2fr;
+  gap: 36px;
 }
 
 /* Brand */
