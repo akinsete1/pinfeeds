@@ -203,11 +203,6 @@ export default function CourseDetailsModal({
 
         {/* Modal Footer */}
         <div className={styles.footer}>
-          <div className={styles.tuitionBox}>
-            <span className={styles.tuitionAmount}>{course.tuition}</span>
-            <span className={styles.tuitionNote}>{course.tuitionInstallment}</span>
-          </div>
-
           <div className={styles.footerActions}>
             <button
               type="button"

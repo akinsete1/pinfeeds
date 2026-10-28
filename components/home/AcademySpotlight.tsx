@@ -49,7 +49,6 @@ export default function AcademySpotlight() {
               </div>
 
               <div className={styles.cardBottom}>
-                <span className={styles.tuition}>{course.tuition}</span>
                 <Link href={`/academy#course-${course.id}`} className={styles.learnMoreLink}>
                   View Details &amp; Apply
                   <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">

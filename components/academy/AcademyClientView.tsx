@@ -170,11 +170,6 @@ export default function AcademyClientView() {
                 </div>
 
                 <div className={styles.cardFooter}>
-                  <div>
-                    <span className={styles.cardTuition}>{course.tuition}</span>
-                    <span className={styles.cardTuitionNote}>{course.tuitionInstallment}</span>
-                  </div>
-
                   <div className={styles.cardActions}>
                     <button
                       type="button"
