@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import PosClient from './PosClient';
 import styles from './pos.module.css';
 
@@ -169,6 +170,20 @@ export default function PosPage() {
               <a href="#pos-features" className="btn btn-outline-white btn-lg" id="pos-hero-features-btn">
                 Explore Features
               </a>
+            </div>
+
+            {/* Hero Dashboard Preview */}
+            <div className={styles.heroImageWrapper}>
+              <div className={styles.heroImageCard}>
+                <Image
+                  src="/images/pos/pos-dashboard.jpg"
+                  alt="Pinfeeds POS Command Center Dashboard showing sales and inventory"
+                  width={1100}
+                  height={620}
+                  priority
+                  className={styles.heroImg}
+                />
+              </div>
             </div>
 
             {/* Trust Bar */}

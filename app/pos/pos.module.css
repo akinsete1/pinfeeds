@@ -130,6 +130,27 @@
   flex-wrap: wrap;
 }
 
+.heroImageWrapper {
+  margin-top: 48px;
+  position: relative;
+  max-width: 100%;
+}
+
+.heroImageCard {
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 212, 255, 0.35);
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.85), 0 0 50px rgba(0, 149, 235, 0.2);
+  background: #0b1329;
+}
+
+.heroImg {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
 .highlightsBar {
   display: flex;
   justify-content: center;

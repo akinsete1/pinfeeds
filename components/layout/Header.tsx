@@ -5,11 +5,11 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import styles from './Header.module.css';
 
-const navLinks = [
+const navLinks: { href: string; label: string; isBadge?: boolean; badgeText?: string }[] = [
   { href: '/', label: 'Home' },
   { href: '/about', label: 'About' },
   { href: '/services', label: 'Services' },
-  { href: '/pos', label: 'POS', isBadge: true },
+  { href: '/pos', label: 'POS', isBadge: true, badgeText: 'New' },
   { href: '/academy', label: 'Academy' },
   { href: '/portfolio', label: 'Portfolio' },
   { href: '/blog', label: 'Blog' },
@@ -75,7 +75,7 @@ export default function Header() {
                   className={`${styles.navLink} ${pathname === link.href ? styles.active : ''}`}
                 >
                   {link.label}
-                  {link.isBadge && <span className={styles.navBadge}>New</span>}
+                  {link.isBadge && <span className={styles.navBadge}>{link.badgeText || 'New'}</span>}
                 </Link>
               </li>
             ))}
@@ -111,7 +111,7 @@ export default function Header() {
                   className={`${styles.mobileNavLink} ${pathname === link.href ? styles.active : ''}`}
                 >
                   <span>{link.label}</span>
-                  {link.isBadge && <span className={styles.mobileNavBadge}>New Courses</span>}
+                  {link.isBadge && <span className={styles.mobileNavBadge}>{link.badgeText || 'New'}</span>}
                 </Link>
               </li>
             ))}

@@ -3,6 +3,7 @@ import HeroSection from '@/components/home/HeroSection';
 import InfoBar from '@/components/home/InfoBar';
 import AboutSection from '@/components/home/AboutSection';
 import ServicesSection from '@/components/home/ServicesSection';
+import PosSpotlight from '@/components/home/PosSpotlight';
 import ProcessSection from '@/components/home/ProcessSection';
 import PortfolioSection from '@/components/home/PortfolioSection';
 import AcademySpotlight from '@/components/home/AcademySpotlight';
@@ -77,6 +78,7 @@ export default async function HomePage() {
       <InfoBar />
       <AboutSection summary={pageData.aboutSummary} />
       <ServicesSection />
+      <PosSpotlight />
       <AcademySpotlight />
       <ProcessSection steps={pageData.processSteps} />
       <PortfolioSection initialItems={portfolioItems} />
