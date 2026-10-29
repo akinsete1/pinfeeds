@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, useMemo } from 'react';
 import Link from 'next/link';
+import HeroDnaBackground from './HeroDnaBackground';
 import styles from './HeroSection.module.css';
 
 interface FloatingElement {
@@ -83,6 +84,7 @@ export default function HeroSection({ phrases }: { phrases: string[] }) {
         <div className={styles.bgGlow1} />
         <div className={styles.bgGlow2} />
         <div className={styles.bgGrid} />
+        <HeroDnaBackground />
       </div>
 
       {/* Floating Code Elements */}

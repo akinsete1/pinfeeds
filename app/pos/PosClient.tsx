@@ -491,7 +491,7 @@ export default function PosClient() {
                   <div className={styles.perkIcon}>📞</div>
                   <div>
                     <span className={styles.perkTitle}>24/7 Dedicated Support</span>
-                    <span className={styles.perkDesc}>Live chat, WhatsApp, phone and email — we're always here for you.</span>
+                    <span className={styles.perkDesc}>Live chat, WhatsApp, phone and email — we&apos;re always here for you.</span>
                   </div>
                 </div>
               </div>
